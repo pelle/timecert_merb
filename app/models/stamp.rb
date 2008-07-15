@@ -1,20 +1,33 @@
 class Stamp 
   include DataMapper::Resource
   property :digest, String,:size => 40, :key => true
-  property :created_at, DateTime
+  property :created_at, Time
   validates_length :digest,:is=>40
+  validates_format :digest,:as=>/[\dabcdef]{40}/
   has n,:referrers
   
+  def self.by_digest(digest)
+    Stamp.first_or_create(:digest=>digest) 
+  end
+    
   def timestamp
-    created_at
+    self.created_at
   end
   
   def utc
-    self.created_at#.gmtime
+    self.timestamp.utc
   end
   
   def to_text
-    utc
+    utc.to_s
+  end
+  
+  def to_yaml
+    to_hash.to_yaml
+  end
+    
+  def to_json
+    to_hash.to_json
   end
   
   def to_ini
@@ -24,4 +37,11 @@ class Stamp
   def record_referrer(referrer)
     referrers.create(:url=>referrer) if referrer&&referrer!=''&&referrer!='/'
   end
+  
+  protected
+  
+  def to_hash
+    @to_hash||={:timestamp=>utc.to_s,:digest=>digest}
+  end
+  
 end

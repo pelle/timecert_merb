@@ -52,7 +52,7 @@ Gem.path.unshift(Merb.root / "gems")
 # another part of your configuration relies on libraries specified
 # here.
 
-dependencies "dm-validations","dm-timestamps","dm-serializer","merb_helpers","haml"
+dependencies "dm-validations","dm-timestamps","dm-serializer","dm-aggregates","dm-migrations","merb_helpers","haml"
 #
 # dependencies "RedCloth", "merb_helpers"
 # OR
