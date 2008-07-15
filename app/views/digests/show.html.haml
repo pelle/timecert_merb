@@ -1,0 +1,37 @@
+%table
+  %tr
+    %th digest
+    %td.digest= @stamp.digest
+  %tr
+    %th first seen (UTC)
+    %td= @stamp.utc
+  -if request.referer!=nil&&request.referer!=''&&request.referer!='/'
+    %tr
+      %th You were referred here from
+      %td
+        %a{:href=>request.referer}
+          =request.referer
+  -if @stamp.referrers.first
+    %tr
+      %th First referred from
+      %td
+        %a{:href=>@stamp.referrers.first.url}
+          =@stamp.referrers.first.url
+
+%h3 Also available as:
+%ul 
+  %li 
+    %a{:href=>"/#{@stamp.digest}.time"} Plain text timestamp
+  %li
+    %a{:href=>"/#{@stamp.digest}.ini"} Plain text ini file
+  %li
+    %a{:href=>"/#{@stamp.digest}.csv"} CSV file
+  %li 
+    %a{:href=>"/#{@stamp.digest}.xml"} XML
+  %li 
+    %a{:href=>"/#{@stamp.digest}.yml"} YAML
+  %li 
+    %a{:href=>"/#{@stamp.digest}.json"} JSON
+
+%p Embed this in your own web page or blog
+=source_code_select "<iframe src=\"http://timecert.org/#{@stamp.digest}.iframe\" width=\"400px\" height=\"30px\"/>"

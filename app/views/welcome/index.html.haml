@@ -1,0 +1,58 @@
+%p 
+  TimeCert is a service for timestamping content. This provides evidence that something existed at a given time. TimeCert will give you the timestamp for when someone first referenced a given digest.
+%p 
+  A Digest is like a fingerprint for a chunk of data. It looks like this: 
+  %tt a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+%p 
+  An application can generate this digest easily. Technically speaking it is a Hex encoded SHA1 digest.
+%p
+  To use this in your own application all you have to do is do a http get request at one of the following URLS:
+%ul
+  %li
+    HTML
+    %br
+    %a{:href=>"/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3"}
+      http://timecert.org/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+  %li 
+    Just the time please 
+    %br
+    %a{:href=>"/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3.time"}
+      http://timecert.org/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3.time
+  %li 
+    Plain text ini 
+    %br
+    %a{:href=>"/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3.txt"}
+      http://timecert.org/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3.txt
+  %li
+    XML 
+    %br
+    %a{:href=>"/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3.xml"}
+      http://timecert.org/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3.xml
+  %li 
+    YAML 
+    %br
+    %a{:href=>"/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3.yml"}
+      http://timecert.org/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3.yml
+%h4 Embedded iframe
+%p Embedded in your own web page or blog
+%iframe{:src=>"/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3.iframe",:width=>"400px",:height=>"30px"}
+%br
+=source_code_select "<iframe src=\"http://timecert.org/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3.iframe\" width=\"400px\" height=\"30px\"/>"
+
+%br
+%a{:href=>"http://neubia.com/archives/000483.html"} Read the TimeCert launch post for more...
+.links
+  %h3 Links to my other Projects
+  %ul 
+    %li 
+      %h4 My blogs
+      %ul
+        %li 
+          %a{:href=>"http://stakeventures.com"} My personal blog
+        %li 
+          %a{:href=>"http://blog.extraeagle.com"} My company blog
+    %li 
+      %h4 My other web apps
+      %ul
+        %li 
+          %a{:href=>"http://agree2.com"} Agree2 - Take back the contract

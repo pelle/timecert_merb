@@ -1,0 +1,21 @@
+%html
+  %head
+    %title TimeCert
+    %link{ :href=>"/stylesheets/boilerplate.css", :media=>"screen",:rel=>"Stylesheet",:type=>"text/css"}
+    %link{ :href=>"/stylesheets/plugins.css", :media=>"screen",:rel=>"Stylesheet",:type=>"text/css"}
+  %body
+    #page
+      #header
+        %ul.tabs
+          %li
+            %a{:href=>"/generate"}
+              Generate digest
+      .wrapper#body
+        .logo
+          %a{:href => "/"}
+            %img{:src=>'/images/logo75.png',:alt=>'TimeCert',:width=>"75",:height=>'75'}
+        .content
+          = catch_content :for_layout
+        .footer
+          %a{:href=>"http://stakeventures.com/pages/whoami"}
+            (c) 2006 Pelle Braendgaard

@@ -23,7 +23,9 @@ Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do |r|
   # RESTful routes
   # r.resources :posts
-
+  r.match('/generate').to(:controller=>'digests',:action=>"generate")
+  r.match('/digest').to(:controller=>'digests',:action=>"digest")
+  r.match(%r'/([\dabcdef]{40})(\.(\w+))?').to(:controller => 'digests', :action => 'show', :digest => '[1]',:format=>"[3]")
   # This is the default route for /:controller/:action/:id
   # This is fine for most cases.  If you're heavily using resource-based
   # routes, you may want to comment/remove this line to prevent
@@ -31,5 +33,5 @@ Merb::Router.prepare do |r|
   r.default_routes
   
   # Change this for your home page to be available at /
-  # r.match('/').to(:controller => 'whatever', :action =>'index')
+  r.match('/').to(:controller => 'welcome', :action =>'index')
 end

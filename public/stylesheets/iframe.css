@@ -1,0 +1,23 @@
+body {
+	background:white;
+	color:grey;
+	margin:0;
+	padding:0 2px;
+	font-family:arial,sans-serif;
+	font-size:10px;
+}
+#digest{
+	font-family:courier,mono-space;
+}
+#timestamp {
+	color:red;
+}
+a {
+	font-weight:bold;
+	color:blue;
+}
+#logo {
+	position: absolute;
+	top:-1px;
+	right:0;
+}

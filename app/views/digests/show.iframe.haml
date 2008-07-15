@@ -1,0 +1,10 @@
+%html
+  %head
+    %title="Timestamp for #{@stamp.digest}"
+    %link{:rel=>"stylesheet",:href=>"/stylesheets/iframe.css"}
+  %body
+    %img#logo{:src=>"/images/logo25.png",:alt=>"TimeCert",:width=>"25px",:height=>"25px"}
+    %span#digest=@stamp.digest
+    %span#timestamp=@stamp.utc
+    %br
+    %a{:href=>"/#{@stamp.digest}",:rel=>"_top"} Certified by TimeCert.org

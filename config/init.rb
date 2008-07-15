@@ -51,6 +51,8 @@ Gem.path.unshift(Merb.root / "gems")
 # boot stage, but it may be important when
 # another part of your configuration relies on libraries specified
 # here.
+
+dependencies "dm-validations","dm-timestamps","dm-serializer","merb_helpers","haml"
 #
 # dependencies "RedCloth", "merb_helpers"
 # OR
@@ -58,6 +60,7 @@ Gem.path.unshift(Merb.root / "gems")
 # OR
 # dependencies "RedCloth" => "> 3.0", "ruby-aes-cext" => "= 1.0"
 Merb::BootLoader.after_app_loads do
+  require "merb-haml"
   # Add dependencies here that must load after the application loads:
 
   # dependency "magic_admin" # this gem uses the app's model classes
@@ -72,7 +75,7 @@ end
 # if you need a database.
 
 # Uncomment for DataMapper ORM
-# use_orm :datamapper
+use_orm :datamapper
 
 # Uncomment for ActiveRecord ORM
 # use_orm :activerecord
@@ -93,7 +96,7 @@ end
 # merb-core provides support for RSpec.
 #
 # use_test :test_unit
-# use_test :rspec
+use_test :rspec
 
 #
 # ==== Set up your basic configuration
@@ -124,6 +127,12 @@ Merb::Config.use do |c|
   c[:session_store] = 'cookie'
 end
 
+
+Merb.add_mime_type(:csv, :to_csv, %w[text/csv], :charset => "utf-8")
+Merb.add_mime_type(:time, :to_text, %w[text/plain], :charset => "utf-8")
+Merb.add_mime_type(:ini, :to_ini, %w[text/plain], :charset => "utf-8")
+Merb.add_mime_type(:iframe, :to_html, %w[text/iframe], :charset => "utf-8") 
+Merb.add_mime_type(:yml, :to_yaml, %w[application/x-yaml text/yaml], :charset => "utf-8")
 
 # ==== Tune your inflector
 
