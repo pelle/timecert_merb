@@ -1,0 +1,21 @@
+[submodule "framework/merb-core"]
+	path = framework/merb-core
+	url = git://github.com/wycats/merb-core.git
+[submodule "framework/merb-more"]
+	path = framework/merb-more
+	url = git://github.com/wycats/merb-more.git
+[submodule "framework/merb-plugins"]
+	path = framework/merb-plugins
+	url = git://github.com/wycats/merb-plugins.git
+[submodule "gems/submodules/extlib"]
+	path = gems/submodules/extlib
+	url = git://github.com/sam/extlib.git
+[submodule "gems/submodules/do"]
+	path = gems/submodules/do
+	url = git://github.com/sam/do.git
+[submodule "gems/submodules/dm-core"]
+	path = gems/submodules/dm-core
+	url = git://github.com/sam/dm-core.git
+[submodule "gems/submodules/dm-more"]
+	path = gems/submodules/dm-more
+	url = git://github.com/sam/dm-more.git
