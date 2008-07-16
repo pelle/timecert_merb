@@ -6,8 +6,12 @@ class Stamp
   validates_format :digest,:as=>/[\dabcdef]{40}/
   has n,:referrers
   
+  @@cache=FifoCache.new(1000) do |digest|
+    Stamp.first_or_create(:digest=>digest)
+  end
+  
   def self.by_digest(digest)
-    Stamp.first_or_create(:digest=>digest) 
+    @@cache[digest]
   end
     
   def timestamp

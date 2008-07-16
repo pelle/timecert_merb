@@ -17,6 +17,23 @@
       %td
         %a{:href=>@stamp.referrers.first.url}
           =@stamp.referrers.first.url
+%h3 What does this mean?
+%p
+  This page shows the first time we've registered anyone accessing a particular digest. It therefore proves the existence of the content that generated the digest was created at the latest on 
+  =@stamp.utc
+  :plain
+    . It may have been available before this time, however TimeCert does not know this.
+%h3 What is a digest
+%p
+  A Digest is the result of a mathematical function called a Hash Algorithm, see
+  =link_to "WikiPedia","http://en.wikipedia.org/wiki/Cryptographic_hash_function"
+  to learn more. The function creates a unique "fingerprint" known as a digest for any given piece of data such as an invoice, a blog post or a patent application. Changing any part of the data including punctuation will give you a different digest. Try it yourself on the 
+  =link_to "TimeCert Digest Generator","/generate"
+  page. TimeCert uses an industry standard one way function called
+  = link_to "SHA1","http://en.wikipedia.org/wiki/SHA-1"
+  which provides a pretty good balance of speed and security.
+  
+-#%h3 Whats this good for?
 
 %h3 Also available as:
 %ul 
@@ -34,4 +51,4 @@
     %a{:href=>"/#{@stamp.digest}.json"} JSON
 
 %p Embed this in your own web page or blog
-=source_code_select "<iframe src=\"http://timecert.org/#{@stamp.digest}.iframe\" width=\"400px\" height=\"30px\"/>"
+=source_code_select "<iframe src=\"http://timecert.org/#{@stamp.digest}.iframe\" width=\"450px\" height=\"30px\"/>"

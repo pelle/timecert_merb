@@ -1,7 +1,13 @@
 %html
   %head
     %title="Timestamp for #{@stamp.digest}"
-    %link{:rel=>"stylesheet",:href=>"/stylesheets/iframe.css"}
+    %style{:type => "text/css" }
+      :plain
+        body {background:white;color:grey;margin:0;padding:0 2px;font-family:arial,sans-serif;font-size:10px;}
+        #digest{font-family: Monaco,Consolas,Liberation Mono,Bitstream Vera Mono,monospace;}
+        #timestamp {color:red;}
+        a {font-weight:bold;color:blue;}
+        #logo {position: absolute;top:-1px;right:0;}  
   %body
     %img#logo{:src=>"/images/logo25.png",:alt=>"TimeCert",:width=>"25px",:height=>"25px"}
     %span#digest=@stamp.digest

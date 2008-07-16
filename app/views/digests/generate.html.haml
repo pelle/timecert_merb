@@ -3,6 +3,7 @@
   This form will generate a digest and then go to the timestamp page for it.
 %p 
   The actual data will not be stored anywhere. Only the digest and timestamp is stored.
+
 %form{ :action=>"/digest",:method=>"POST"} 
   %textarea{:name=>"body",:cols=>60,:rows=>10}=@body
   %br

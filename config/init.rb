@@ -52,7 +52,7 @@ Gem.path.unshift(Merb.root / "gems")
 # another part of your configuration relies on libraries specified
 # here.
 
-dependencies "dm-validations","dm-timestamps","dm-serializer","dm-aggregates","dm-migrations","merb_helpers","haml","merb-freezer"
+dependencies "dm-validations","dm-timestamps","dm-serializer","dm-aggregates","dm-migrations","merb_helpers","haml","merb-freezer","merb-cache","merb-assets"
 #
 # dependencies "RedCloth", "merb_helpers"
 # OR
@@ -62,7 +62,7 @@ dependencies "dm-validations","dm-timestamps","dm-serializer","dm-aggregates","d
 Merb::BootLoader.after_app_loads do
   require "merb-haml"
   # Add dependencies here that must load after the application loads:
-
+  DataObjects::Mysql.logger = Merb.logger 
   # dependency "magic_admin" # this gem uses the app's model classes
 end
 

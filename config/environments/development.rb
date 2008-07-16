@@ -4,4 +4,6 @@ Merb::Config.use { |c|
   c[:reload_classes] = true
   c[:reload_time] = 0.5
   c[:log_auto_flush ] = true
+  c[:log_level] = :debug
+  c[:log_file] = Merb.log_path + "/development.log"
 }
