@@ -1,0 +1,16 @@
+---
+# This is a sample database file for the DataMapper ORM
+:development: &defaults
+  :adapter: mysql
+  :database: timecert_development
+  :username: root
+  :password: 
+  :host: localhost
+
+:test:
+  <<: *defaults
+  :database: timecert_test
+
+:production:
+  <<: *defaults
+  :database: timecert_production

@@ -2,7 +2,7 @@
 
 set :application, "timecert"
  
-set :adapter, 'ebb' # or 'thin' 
+set :adapter, 'mongrel' # or 'thin' 
 set :start_port, 4000 
 set :processes, 2
 set :log_path, "#{shared_path}/log/production.log"  
@@ -12,7 +12,7 @@ set :repository,  "git@github.com:pelle/timecert.git"
 set :scm, "git"
 #set :scm_passphrase, "p00p" #This is your custom users password
 set :user, "deployer"
-set :branch, "origin/master"
+set :branch, "master"
 
 role :app, "timecert"
 role :web, "timecert"
@@ -34,4 +34,10 @@ namespace :deploy do
     deploy.stop 
     deploy.start 
   end 
+  
+  task :after_update_code, :roles => :app do   
+    run "rm -rf #{release_path}/framework"
+    run "rm -rf #{release_path}/gems"
+  end
 end
+
