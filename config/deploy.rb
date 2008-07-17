@@ -36,9 +36,7 @@ namespace :deploy do
     deploy.start 
   end 
   
-  task :after_update_code, :roles => :app do   
-    run "rm -rf #{release_path}/framework"
-    run "rm -rf #{release_path}/gems"
-  end
+#  task :after_update_code, :roles => :app do   
+#  end
 end
 
