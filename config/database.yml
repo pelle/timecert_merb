@@ -6,7 +6,7 @@
   :username: root
   :password: 
   :host: localhost
-
+  :socket: /tmp/mysql.sock
 :test:
   <<: *defaults
   :database: timecert_test
@@ -14,3 +14,4 @@
 :production:
   <<: *defaults
   :database: timecert_production
+  :socket: /var/run/mysqld/mysqld.sock

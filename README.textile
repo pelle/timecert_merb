@@ -1,0 +1,15 @@
+h1. TimeCert
+
+"TimeCert":http://timecert.org is a project to provide a trusted third-party timestamping service. It will essentially provide a timestamp for each SHA1 digest presented to it.
+
+h3. Source Code Release
+
+This is the first public release of TimeCert source code. We're releasing this mainly to encourage trust in our service. We also encourage others to run competing timestamping services. It is released under the "AGPL":http://www.gnu.org/licenses/agpl.html, which means that if you decide to run a competing service you will need to release your source changes as well. We recommend using GitHub's great forking feature for this.
+
+h3. Getting started
+
+"TimeCert":http://timecert.org currently uses edge merb and datamapper. To install this please follow the instructions in "Life on the Edge with Merb, Datamapper and RSpec":http://merb.4ninjas.org/. Once the next releases of Merb and Datamapper are released they should be in sync and we plan on just following official releases.
+
+h3. Contact info
+
+My name is Pelle Braendgaard and my primary blog is "Stake Ventures Inc":http://stakeventures.com. I may be available for consulting work in the Ruby space, email me at pelle@stakeventures.com for more info.

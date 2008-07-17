@@ -61,9 +61,7 @@ dependencies "dm-validations","dm-timestamps","dm-serializer","dm-aggregates","d
 # dependencies "RedCloth" => "> 3.0", "ruby-aes-cext" => "= 1.0"
 Merb::BootLoader.after_app_loads do
   require "merb-haml"
-  # Add dependencies here that must load after the application loads:
   DataObjects::Mysql.logger = Merb.logger 
-  # dependency "magic_admin" # this gem uses the app's model classes
 end
 
 #
