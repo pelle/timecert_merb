@@ -7,6 +7,7 @@ class Stamp
   has n,:referrers
   
   @@cache=FifoCache.new(1000) do |digest|
+    Merb.logger.debug "Loading into Cache"
     Stamp.first_or_create(:digest=>digest)
   end
   
@@ -20,6 +21,10 @@ class Stamp
   
   def utc
     self.timestamp.utc
+  end
+  
+  def referrer
+    @referrer||=referrers.first
   end
   
   def to_text

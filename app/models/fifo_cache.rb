@@ -1,5 +1,6 @@
 class FifoCache
   def initialize(size=1000,&block)
+    Merb.logger.info "Loading Cache"
     @max_size=size
     @keys=[]
     @lookup={}

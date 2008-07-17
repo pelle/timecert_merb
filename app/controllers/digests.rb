@@ -15,7 +15,7 @@ class Digests < Application
   
   def show
     provides :html,:text,:yml,:yaml,:json,:xml,:csv,:ini,:time,:iframe
-    
+    Merb.logger.info "SHOW"
     @stamp=Stamp.first_or_create(:digest=>params[:digest])
     @stamp.record_referrer(request.referer)
     if content_type==:iframe

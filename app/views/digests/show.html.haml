@@ -1,3 +1,8 @@
+.stamp
+  %p TimeCert recorded that
+  .digest=@stamp.digest
+  %p was first seen by us on
+  .timestamp=@stamp.utc
 %table
   %tr
     %th digest
@@ -15,8 +20,8 @@
     %tr
       %th First referred from
       %td
-        %a{:href=>@stamp.referrers.first.url}
-          =@stamp.referrers.first.url
+        %a{:href=>@stamp.referrer.url}
+          =@stamp.referrer.url
 %h3 What does this mean?
 %p
   This page shows the first time we've registered anyone accessing a particular digest. It therefore proves the existence of the content that generated the digest was created at the latest on 
@@ -26,14 +31,16 @@
 %h3 What is a digest
 %p
   A Digest is the result of a mathematical function called a Hash Algorithm, see
-  =link_to "WikiPedia","http://en.wikipedia.org/wiki/Cryptographic_hash_function"
+  =link_to "Wikipedia","http://en.wikipedia.org/wiki/Cryptographic_hash_function"
   to learn more. The function creates a unique "fingerprint" known as a digest for any given piece of data such as an invoice, a blog post or a patent application. Changing any part of the data including punctuation will give you a different digest. Try it yourself on the 
   =link_to "TimeCert Digest Generator","/generate"
   page. TimeCert uses an industry standard one way function called
   = link_to "SHA1","http://en.wikipedia.org/wiki/SHA-1"
   which provides a pretty good balance of speed and security.
   
--#%h3 Whats this good for?
+%h3 Whats this good for?
+%p
+  A TimeCert certificate can provide thirty party proof that you were the first to write or create something. By integrating it into your blog, Content Management System or web application this can be done automatically for you.
 
 %h3 Also available as:
 %ul 
@@ -50,5 +57,7 @@
   %li 
     %a{:href=>"/#{@stamp.digest}.json"} JSON
 
-%p Embed this in your own web page or blog
+%h3 Integrate in your blog or web application
+%p As long as you can generate a SHA1 hex encoded digest of your article or data you can simply integrate timecert by embedding this html in your page replacing this digest with your digest.
 =source_code_select "<iframe src=\"http://timecert.org/#{@stamp.digest}.iframe\" width=\"450px\" height=\"30px\"/>"
+

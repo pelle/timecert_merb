@@ -2,6 +2,8 @@
   %head
     %title TimeCert
     %link{ :href=>"/stylesheets/styles.css", :media=>"screen",:rel=>"Stylesheet",:type=>"text/css"}
+    %meta{:name=>"viewport",:content=>"width=600"}
+
   %body
     #page
       #header
@@ -15,6 +17,7 @@
             %img{:src=>'/images/logo75.png',:alt=>'TimeCert',:width=>"75",:height=>'75'}
         .content
           = catch_content :for_layout
-        .footer
-          %a{:href=>"http://stakeventures.com/pages/whoami"}
-            (c) 2006-2008 Pelle Braendgaard
+    .footer
+      .stuff
+        %a{:href=>"http://stakeventures.com/pages/whoami"}
+          (c) 2006-2008 Pelle Braendgaard

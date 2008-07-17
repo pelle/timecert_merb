@@ -13,6 +13,7 @@ set :scm, "git"
 #set :scm_passphrase, "p00p" #This is your custom users password
 set :user, "deployer"
 set :branch, "master"
+set :keep_releases, 5
 
 role :app, "timecert"
 role :web, "timecert"
