@@ -1,0 +1,12 @@
+%h1 TimeCert Audit
+
+%p
+  This page provides an audit table of the latest 1000 timestamps.
+%table
+  %tr
+    %th sha1(digest)
+    %th timestamp
+  -@stamps.each do |stamp|
+    %tr
+      %td=stamp.digest
+      %td=stamp.created_at

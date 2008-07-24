@@ -1,0 +1,20 @@
+%h1 TimeCert Statistics
+
+%p
+  This page provides statistics about the usage of TimeCert.
+%table
+  %tr
+    %th Date
+    %th New Digests
+    %th Requests
+    %th New/Req
+    %th Unique Referrers
+    %th Unique Sites
+  -@stats.each do |stat|
+    %tr
+      %td=stat.date
+      %td=stat.digests
+      %td=stat.requests
+      %td=stat.ratio
+      %td=stat.referrers
+      %td=stat.sites

@@ -14,25 +14,11 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-class Referrer
-  include DataMapper::Resource
-  property :id, Integer,  :serial => true
-  property :created_at, DateTime
-  property :url, String,:size=>255
-  property :stamp_digest, String,:size => 40
-  property :site_url, String,:size => 255
-  validates_present :url,:stamp_digest
-  
-  belongs_to :stamp
-  belongs_to :site
-  before :create, :extract_site_url
-
-  def extract_site_url
-    self.url=~/((\w+:\/*)((\w+\-+)|(\w+\.))*\w{1,63}\.[0-9a-zA-Z]{1,6})/i
-    self.site_url=$1.downcase if $1
+class Audit < Application
+#  provides :csv
+  def index
+    @stamps=repository(:default).adapter.query("select sha1(digest) as digest, created_at from stamps order by created_at desc limit 100")
+    display @stamps
   end
   
-  after :create do
-    Site.create :url=>self.site_url unless self.site
-  end
 end
