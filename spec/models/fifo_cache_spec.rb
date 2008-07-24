@@ -29,6 +29,10 @@ describe FifoCache do
     @cache.to_a.should==[]
   end
   
+  it "should be able to clear itself" do
+    @cache.clear
+    @cache.should be_empty
+  end
   describe "Single Entry" do
     before(:each) do
       @cache[1]
@@ -57,6 +61,11 @@ describe FifoCache do
 
     it "should have an array" do
       @cache.to_a.should==[1]
+    end
+
+    it "should be able to clear itself" do
+      @cache.clear
+      @cache.should be_empty
     end
 
   end
@@ -89,6 +98,11 @@ describe FifoCache do
 
     it "should have an  array" do
       @cache.to_a.should==[1,2,3,4]
+    end
+    
+    it "should be able to clear itself" do
+      @cache.clear
+      @cache.should be_empty
     end
     
     describe "Expire a value" do

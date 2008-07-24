@@ -23,7 +23,7 @@ class Stamp
   has n,:referrers
   
   @@cache=FifoCache.new(1000) do |digest|
-    Merb.logger.debug "Loading into Cache"
+    Merb.logger.debug "Loading #{digest} into Cache" 
     Stamp.first_or_create(:digest=>digest)
   end
   
@@ -63,7 +63,12 @@ class Stamp
     referrers.create(:url=>referrer) if referrer&&referrer!=''&&referrer!='/'
   end
   
+  def self.clear_cache
+    @@cache.clear
+  end
+  
   protected
+  
   
   def to_hash
     @to_hash||={:timestamp=>utc.to_s,:digest=>digest}

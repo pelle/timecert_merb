@@ -2,11 +2,12 @@ require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
 describe Stamp do
   before do
-    Stamp.all.each {|s|s.destroy}
+    DataMapper.auto_migrate!
+    Stamp.clear_cache
   end
   
   it "should not have any stamps" do
-    DataMapper.auto_migrate!
+    Stamp.count.should==0
   end
   
   describe "Validation" do
@@ -49,11 +50,15 @@ describe Stamp do
     it "should have a utc" do
       @stamp.utc.should_not be_nil
     end
+    
+    it "should have 1 timestamp" do
+      Stamp.count.should==1
+    end
+    
   end
   
   describe "by_digest" do
     before(:each) do
-      @count=Stamp.count
       @stamp=Stamp.by_digest "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3"
     end
     
@@ -63,6 +68,26 @@ describe Stamp do
     
     it "should have a timestamp" do
       @stamp.created_at.should_not be_nil
+    end
+    
+    it "should be saved" do
+      @stamp.should_not be_new_record
+    end
+    
+    it "should be valid" do
+      @stamp.should be_valid
+    end
+    
+    it "should not have any errors" do
+      @stamp.errors.full_messages.should==[]
+    end
+    
+    it "should find created stamp by digest" do
+      Stamp.first.should==@stamp
+    end
+    
+    it "should find created stamp by digest" do
+      Stamp.first(:digest=>@stamp.digest).should==@stamp
     end
     
     it "should have 1 timestamp" do
@@ -81,13 +106,17 @@ describe Stamp do
       it "should description" do
         @stamp2.digest.should=="a94a8fe5ccb19ba61c4c0873d391e987982fbbd3"
       end
+    
+      it "should be saved" do
+        @stamp.should_not be_new_record
+      end
 
       it "should have a timestamp" do
         @stamp2.created_at.should_not be_nil
       end
 
       it "should have 1 timestamp" do
-        Stamp.count.should==1
+        Stamp.all.size.should==1
       end
     end
   end

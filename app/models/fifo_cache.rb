@@ -16,7 +16,7 @@
 
 class FifoCache
   def initialize(size=1000,&block)
-    Merb.logger.info "Loading Cache"
+    Merb.logger.info "Initializing Cache with max size=#{size}"
     @max_size=size
     @keys=[]
     @lookup={}
@@ -43,9 +43,15 @@ class FifoCache
     @lookup.has_key?(key)
   end
   
+  def clear
+    @keys=[]
+    @lookup={}
+  end
+  
   protected
   
   def []=(key,value)
+    Merb.logger.info "Storing new value key=#{key},size=#{self.size}"
     @lookup[key]=value
     self<<key
   end

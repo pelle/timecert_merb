@@ -17,7 +17,12 @@
 class Site 
   include DataMapper::Resource
   property :url,String,:size=>255,:key=>true
+  property :title, String
   property :description,Text
   property :created_at,DateTime
   has n,  :referrers
+  
+  def to_s
+    self.title||self.url
+  end
 end

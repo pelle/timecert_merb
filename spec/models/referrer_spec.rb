@@ -121,6 +121,7 @@ describe Referrer do
         @referrer.site.should_not be_nil
         @referrer.site.should be_is_a(Site)
         @referrer.site.url.should=="http://www.someapplication.com"
+        @referrer.site.referrers.should include(@referrer)
       end
 
       it "should have created only one site" do
@@ -129,6 +130,28 @@ describe Referrer do
       
     end
 
+  end
+  
+  describe "Validation" do
+    before(:each) do
+      @referrer=Referrer.new :stamp=>@stamp,:url=>"http://www.someapplication.com/article/1"
+    end
+    
+    it "should be valid" do
+      @referrer.should be_valid
+    end
+    
+    it "should require url" do
+      @referrer.url=nil
+      @referrer.should_not be_valid
+    end
+
+    
+    it "should require stamp" do
+      @referrer.stamp=nil
+      @referrer.should_not be_valid
+    end
+    
   end
 
 end
