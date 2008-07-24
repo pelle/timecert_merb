@@ -15,10 +15,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 class Audit < Application
-#  provides :csv
+  provides :json,:yaml
   def index
     @stamps=repository(:default).adapter.query("select sha1(digest) as digest, created_at from stamps order by created_at desc limit 100")
-    display @stamps
+    display @stamps.collect{|s| {:digest=>s.digest,:timestamp=>s.created_at}}
   end
   
 end
