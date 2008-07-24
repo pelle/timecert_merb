@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 class Stats < Application
-  provides :csv,:json,:yaml,:xml
+  provides :json,:yaml,:xml
   def index
     @stats=Statistic.all(:order=>[:date.desc],:limit=>90)
     display @stats

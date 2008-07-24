@@ -20,9 +20,15 @@ class Site
   property :title, String
   property :description,Text
   property :created_at,DateTime
+  property :referrer_count,Integer
+  property :digest_count,Integer
   has n,  :referrers
   
   def to_s
     self.title||self.url
+  end
+  
+  def self.update_stats
+    repository(:default).adapter.execute("insert into sites (url,created_at,referrer_count,digest_count) select site_url,min(created_at) as created_at,count(distinct url) as referrer_count,count(distinct stamp_digest) as digest_count from referrers where site_url is not null and site_url!='' group by site_url ON DUPLICATE KEY UPDATE created_at=VALUES(created_at), referrer_count =VALUES(referrer_count), digest_count =VALUES(digest_count)")
   end
 end

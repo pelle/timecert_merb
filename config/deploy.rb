@@ -36,6 +36,12 @@ namespace :deploy do
     deploy.start 
   end 
   
+  #Overwrite the default deploy.migrate as it calls: 
+  #rake RAILS_ENV=production db:migrate
+  desc "MIGRATE THE DB!"
+  deploy.task :migrate do
+    run "cd #{release_path}; rake dm:db:migrate:up MERB_ENV=production"
+  end
 #  task :after_update_code, :roles => :app do   
 #  end
 end

@@ -26,6 +26,7 @@ Merb::Router.prepare do |r|
   r.match('/generate').to(:controller=>'digests',:action=>"generate")
   r.match('/digest').to(:controller=>'digests',:action=>"digest")
   r.match(%r'/([\dabcdef]{40})(\.(\w+))?').to(:controller => 'digests', :action => 'show', :digest => '[1]',:format=>"[3]")
+  r.match('/stats').to(:controller=>'stats',:action=>"index").name(:stats)
   # This is the default route for /:controller/:action/:id
   # This is fine for most cases.  If you're heavily using resource-based
   # routes, you may want to comment/remove this line to prevent

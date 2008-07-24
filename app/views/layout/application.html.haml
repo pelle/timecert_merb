@@ -19,8 +19,14 @@
           = catch_content :for_layout
     .footer
       .stuff
-        %a{:href=>"http://stakeventures.com/pages/whoami"}
-          (c) 2006-2008 Pelle Braendgaard and Stake Ventures Inc.
-        Source code available on
-        %a{:href=>"http://github.com/pelle/timecert/tree/master"}
-          GitHub
+        %p 
+          Source code available on
+          %a{:href=>"http://github.com/pelle/timecert/tree/master"}
+            GitHub
+          %a{:href=>"http://github.com/pelle/timecert/wikis"}Development Wiki
+          Also see our daily 
+          =link_to "Usage Statistics",url(:stats)
+        %p
+          %a{:href=>"http://stakeventures.com/pages/whoami"}
+            (c) 2006-2008 Pelle Braendgaard and Stake Ventures Inc.
+        

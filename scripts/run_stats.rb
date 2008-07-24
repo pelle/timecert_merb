@@ -9,4 +9,5 @@ Merb.environment = Merb::Config[:environment]
 Merb.root = Merb::Config[:merb_root] 
 Merb::BootLoader.run 
 
+Site.update_stats
 Statistic.update_stats
