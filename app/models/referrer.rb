@@ -33,6 +33,6 @@ class Referrer
   end
   
   after :create do
-    Site.create :url=>self.site_url unless self.site
+    Site.create :url=>self.site_url if self.site_url&&self.site_url!='' and !Site.first(:url=>self.site_url)
   end
 end
