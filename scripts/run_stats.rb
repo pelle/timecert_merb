@@ -8,6 +8,7 @@ Merb::Config.setup(:merb_root   => ".",
 Merb.environment = Merb::Config[:environment] 
 Merb.root = Merb::Config[:merb_root] 
 Merb::BootLoader.run 
-
+require 'site'
+require 'statistic'
 Site.update_stats
 Statistic.update_stats
