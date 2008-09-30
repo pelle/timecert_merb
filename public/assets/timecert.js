@@ -160,7 +160,7 @@ function element2sha1(id){
 function elem2TimeCertIframe(id){
     var digest=element2sha1(id);
     if (digest!=null)
-        document.write('<iframe height="30px" frameborder="0" scrolling="0" src="http://timecert.org/'+digest+'.iframe" width="400px"></iframe><br/>');
+        document.write('<iframe frameborder="0" scrolling="0" src="http://timecert.org/'+digest+'.iframe" width="450px" height="30px"></iframe><br/>');
 }
 function elem2TimeCertLink(id){
     var digest=element2sha1(id);
