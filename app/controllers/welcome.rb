@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 class Welcome < Application
-  cache_pages :index
+#  cache :index
   def index
     render
   end

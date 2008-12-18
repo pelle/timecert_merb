@@ -50,7 +50,11 @@ class Stamp
   def to_yaml
     to_hash.to_yaml
   end
-    
+  
+  def to_csv
+    "#{digest},#{timestamp}"
+  end
+  
   def to_json
     to_hash.to_json
   end

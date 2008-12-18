@@ -8,7 +8,7 @@
 
   <div id="left-container">
     <h3>Exception:</h3>
-    <p><%= params[:exception] %></p>
+    <p><%= request.exceptions.first.message %></p>
   </div>
 
   <div id="main-container">
@@ -41,7 +41,7 @@
   <div id="footer-container">
     <hr />
     <div class="left"></div>
-    <div class="right">&copy; 2007 the merb dev team</div>
+    <div class="right">&copy; 2008 the merb dev team</div>
     <p>&nbsp;</p>
   </div>
 </div>
